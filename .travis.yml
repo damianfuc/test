@@ -11,9 +11,16 @@ dist: focal
 install: skip
 jobs:
   include:
-    name: failing
-    script: true
-
+    - os: linux
+      dist: focal
+      addons:
+        sbom:                                          # new node
+          on:
+            branch: 'main'                 # branch of the repository
+          run_phase: 'after_success'                   # when SBOM generation should be executed; see below
+          output_format: 'cyclonedx-json'              # SBOM file(s) output format
+          input_dir: '/sbom/ruby'                      # relative paths within build job environments, see below
+          output_dir: '/sbom/ruby'
 after_success:
   echo done
   echo $TRAVIS_TEST_RESULT
