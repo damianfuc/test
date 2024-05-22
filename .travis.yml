@@ -1,6 +1,7 @@
 os: linux
 
-language: java
+rvm: 2.6.3
+language: ruby
 services:
   docker
 cache:
