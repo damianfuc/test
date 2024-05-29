@@ -6,6 +6,17 @@ services:
 cache:
   directories: $HOME/.m2
 dist: bionic
+keys:
+  - SSH_KEY_FOR_SIGNING # must match the key identifier set in the UI
+
+env:
+  secret: “...” 
+
+before_script: 
+  - travis_key SSH_KEY_FOR_SIGNING cosign.key  le
+
+script: 
+  - cosign sign --key cosign.key [whatever_the_image_identifier_is]
 
 install: skip
 jobs:
