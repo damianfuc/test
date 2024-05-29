@@ -10,7 +10,7 @@ keys:
   - SSH_KEY_FOR_SIGNING # must match the key identifier set in the UI
 
 env:
-  secret: “...” 
+  secret: “damian” 
 
 before_script: 
   - travis_key SSH_KEY_FOR_SIGNING cosign.key  le
